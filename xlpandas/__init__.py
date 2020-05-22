@@ -90,9 +90,8 @@ class xlDataFrame(pd.DataFrame):
 
         for c in range(w):
             worksheet.cell(skiprows, c+1, self.columns[c])
-            col = self[self.columns[c]]
             for r in range(h):
-                value = col.iloc[r]
+                value = self.iloc[r, c]
                 if pd.isna(value):
                     value = None
                 worksheet.cell(skiprows+r+1, c+1).value = value
